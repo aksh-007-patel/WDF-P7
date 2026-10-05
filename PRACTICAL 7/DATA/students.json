@@ -1,0 +1,579 @@
+{
+    "metadata": {
+        "dataset": "Student Profiles",
+        "version": "1.0.0",
+        "lastUpdated": "2026-10-05 11:53:57",
+        "totalRecords": 34
+    },
+    "records": [
+        {
+            "studentId": "26DIT133",
+            "fullName": "Ananya Joshi",
+            "major": "Information Technology",
+            "graduationYear": 2028,
+            "gpa": 9.65,
+            "extracurricularActivities": [
+                "President of Web Development Club",
+                "Hackathon Winner 2025",
+                "IEEE Volunteer"
+            ],
+            "contact": {
+                "email": "ananya.joshi@charusat.edu.in",
+                "phone": "9123456789",
+                "address": "Surat, Gujarat"
+            }
+        },
+        {
+            "studentId": "26DIT132",
+            "fullName": "Ananya Joshi",
+            "major": "Information Technology",
+            "graduationYear": 2028,
+            "gpa": 9.65,
+            "extracurricularActivities": [
+                "President of Web Development Club",
+                "Hackathon Winner 2025",
+                "IEEE Volunteer"
+            ],
+            "contact": {
+                "email": "ananya.joshi@charusat.edu.in",
+                "phone": "9123456789",
+                "address": "Surat, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DCE124",
+            "fullName": "Virja Aksh",
+            "major": "Computer Engineering",
+            "graduationYear": 2028,
+            "gpa": 9.25,
+            "extracurricularActivities": [
+                "Coding Club President",
+                "Hackathon Winner 2025",
+                "NSS Volunteer"
+            ],
+            "contact": {
+                "email": "25dce124@charusat.edu.in",
+                "phone": "9274338033",
+                "address": "Anand, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DCE001",
+            "fullName": "Aarav Sharma",
+            "major": "Computer Engineering",
+            "graduationYear": 2028,
+            "gpa": 8.72,
+            "extracurricularActivities": [
+                "Football Team Captain",
+                "Coding Club Member"
+            ],
+            "contact": {
+                "email": "25dce001@charusat.edu.in",
+                "phone": "9876543210",
+                "address": "Ahmedabad, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DME056",
+            "fullName": "Priya Patel",
+            "major": "Mechanical Engineering",
+            "graduationYear": 2028,
+            "gpa": 9.41,
+            "extracurricularActivities": [
+                "Robotics Club",
+                "Debate Society",
+                "Class Representative"
+            ],
+            "contact": {
+                "email": "25dme056@charusat.edu.in",
+                "phone": "9123456780",
+                "address": "Vadodara, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DEE089",
+            "fullName": "Rohan Gupta",
+            "major": "Electrical Engineering",
+            "graduationYear": 2028,
+            "gpa": 8.15,
+            "extracurricularActivities": [
+                "IEEE Student Member",
+                "Drone Club"
+            ],
+            "contact": {
+                "email": "25dee089@charusat.edu.in",
+                "phone": "9321654780",
+                "address": "Surat, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DCE012",
+            "fullName": "Ananya Iyer",
+            "major": "Computer Engineering",
+            "graduationYear": 2028,
+            "gpa": 9.58,
+            "extracurricularActivities": [
+                "ACM Student Chapter Head",
+                "Photography Club",
+                "Cultural Committee"
+            ],
+            "contact": {
+                "email": "25dce012@charusat.edu.in",
+                "phone": "9456780123",
+                "address": "Nadiad, Gujarat"
+            }
+        },
+        {
+            "studentId": "24DCE034",
+            "fullName": "Kabir Singh",
+            "major": "Computer Engineering",
+            "graduationYear": 2027,
+            "gpa": 7.89,
+            "extracurricularActivities": [
+                "Basketball Team",
+                "E-Cell Member"
+            ],
+            "contact": {
+                "email": "24dce034@charusat.edu.in",
+                "phone": "9632587410",
+                "address": "Gandhinagar, Gujarat"
+            }
+        },
+        {
+            "studentId": "24DME078",
+            "fullName": "Sneha Desai",
+            "major": "Mechanical Engineering",
+            "graduationYear": 2027,
+            "gpa": 8.92,
+            "extracurricularActivities": [
+                "Formula SAE Team",
+                "Fine Arts Club",
+                "NCC Cadet"
+            ],
+            "contact": {
+                "email": "24dme078@charusat.edu.in",
+                "phone": "9785432109",
+                "address": "Rajkot, Gujarat"
+            }
+        },
+        {
+            "studentId": "24DEC045",
+            "fullName": "Arjun Reddy",
+            "major": "Electronics & Communication",
+            "graduationYear": 2027,
+            "gpa": 8.47,
+            "extracurricularActivities": [
+                "IoT Club",
+                "Music Society"
+            ],
+            "contact": {
+                "email": "24dec045@charusat.edu.in",
+                "phone": "9012345678",
+                "address": "Junagadh, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DBI067",
+            "fullName": "Diya Joshi",
+            "major": "Biomedical Engineering",
+            "graduationYear": 2028,
+            "gpa": 9.13,
+            "extracurricularActivities": [
+                "BioTech Club",
+                "Red Cross Volunteer",
+                "Literary Society"
+            ],
+            "contact": {
+                "email": "25dbi067@charusat.edu.in",
+                "phone": "9198765432",
+                "address": "Bhavnagar, Gujarat"
+            }
+        },
+        {
+            "studentId": "23DCE201",
+            "fullName": "Vikram Mehta",
+            "major": "Computer Engineering",
+            "graduationYear": 2026,
+            "gpa": 9.67,
+            "extracurricularActivities": [
+                "Student Council President",
+                "Research Assistant - AI Lab",
+                "Placement Coordinator"
+            ],
+            "contact": {
+                "email": "23dce201@charusat.edu.in",
+                "phone": "9288776655",
+                "address": "Mumbai, Maharashtra"
+            }
+        },
+        {
+            "studentId": "24DCE145",
+            "fullName": "Neha Bhandari",
+            "major": "Computer Engineering",
+            "graduationYear": 2027,
+            "gpa": 9.04,
+            "extracurricularActivities": [
+                "Dance Club Secretary",
+                "GDG Campus Lead",
+                "Mentor - Coding Bootcamp"
+            ],
+            "contact": {
+                "email": "24dce145@charusat.edu.in",
+                "phone": "9311223344",
+                "address": "Pune, Maharashtra"
+            }
+        },
+        {
+            "studentId": "25DIT023",
+            "fullName": "Aditya Kulkarni",
+            "major": "Information Technology",
+            "graduationYear": 2028,
+            "gpa": 8.33,
+            "extracurricularActivities": [
+                "Open Source Club",
+                "Gaming Society President"
+            ],
+            "contact": {
+                "email": "25dit023@charusat.edu.in",
+                "phone": "9422334455",
+                "address": "Nashik, Maharashtra"
+            }
+        },
+        {
+            "studentId": "25DCH011",
+            "fullName": "Smita Kapoor",
+            "major": "Chemical Engineering",
+            "graduationYear": 2028,
+            "gpa": 8.86,
+            "extracurricularActivities": [
+                "Eco Club Head",
+                "Chemistry Olympiad Winner"
+            ],
+            "contact": {
+                "email": "25dch011@charusat.edu.in",
+                "phone": "9533445566",
+                "address": "Jamnagar, Gujarat"
+            }
+        },
+        {
+            "studentId": "24DCI099",
+            "fullName": "Raghav Chawla",
+            "major": "Civil Engineering",
+            "graduationYear": 2027,
+            "gpa": 8.05,
+            "extracurricularActivities": [
+                "SAE Chapter",
+                "Sports Committee",
+                "Cricket Team Vice-Captain"
+            ],
+            "contact": {
+                "email": "24dci099@charusat.edu.in",
+                "phone": "9644556677",
+                "address": "Jaipur, Rajasthan"
+            }
+        },
+        {
+            "studentId": "23DME188",
+            "fullName": "Tanvi Kothari",
+            "major": "Mechanical Engineering",
+            "graduationYear": 2026,
+            "gpa": 9.33,
+            "extracurricularActivities": [
+                "Formula SAE Chief Designer",
+                "IEEE Women in Engineering",
+                "Theatre Club"
+            ],
+            "contact": {
+                "email": "23dme188@charusat.edu.in",
+                "phone": "9755667788",
+                "address": "Indore, Madhya Pradesh"
+            }
+        },
+        {
+            "studentId": "25DCE077",
+            "fullName": "Manav Agarwal",
+            "major": "Computer Engineering",
+            "graduationYear": 2028,
+            "gpa": 7.56,
+            "extracurricularActivities": [
+                "Anime & Manga Club",
+                "Badminton Team"
+            ],
+            "contact": {
+                "email": "25dce077@charusat.edu.in",
+                "phone": "9866778899",
+                "address": "Surendranagar, Gujarat"
+            }
+        },
+        {
+            "studentId": "24DEC033",
+            "fullName": "Ritika Bhatt",
+            "major": "Electronics & Communication",
+            "graduationYear": 2027,
+            "gpa": 9.19,
+            "extracurricularActivities": [
+                "VLSI Club",
+                "Toastmasters Club",
+                "Women in Tech Society"
+            ],
+            "contact": {
+                "email": "24dec033@charusat.edu.in",
+                "phone": "9977889900",
+                "address": "Udaipur, Rajasthan"
+            }
+        },
+        {
+            "studentId": "23DEC256",
+            "fullName": "Siddharth Jain",
+            "major": "Electronics & Communication",
+            "graduationYear": 2026,
+            "gpa": 8.77,
+            "extracurricularActivities": [
+                "Embedded Systems Project Lead",
+                "Drone Racing Champion",
+                "TEDx Speaker"
+            ],
+            "contact": {
+                "email": "23dec256@charusat.edu.in",
+                "phone": "9188990011",
+                "address": "Delhi, New Delhi"
+            }
+        },
+        {
+            "studentId": "25DCE101",
+            "fullName": "Ishita Trivedi",
+            "major": "Computer Engineering",
+            "graduationYear": 2028,
+            "gpa": 9.08,
+            "extracurricularActivities": [
+                "Cybersecurity Club",
+                "CTF Team Lead",
+                "Poetry Club"
+            ],
+            "contact": {
+                "email": "25dce101@charusat.edu.in",
+                "phone": "9299001122",
+                "address": "Kutch, Gujarat"
+            }
+        },
+        {
+            "studentId": "24DIT088",
+            "fullName": "Yash Rajput",
+            "major": "Information Technology",
+            "graduationYear": 2027,
+            "gpa": 8.28,
+            "extracurricularActivities": [
+                "DevOps Society",
+                "Trekking Club",
+                "Table Tennis Team"
+            ],
+            "contact": {
+                "email": "24dit088@charusat.edu.in",
+                "phone": "9300112233",
+                "address": "Mount Abu, Rajasthan"
+            }
+        },
+        {
+            "studentId": "25DCE042",
+            "fullName": "Kavya Menon",
+            "major": "Computer Engineering",
+            "graduationYear": 2028,
+            "gpa": 9.47,
+            "extracurricularActivities": [
+                "ML Research Group",
+                "Google DSC Lead",
+                "Orator - Public Speaking Club"
+            ],
+            "contact": {
+                "email": "25dce042@charusat.edu.in",
+                "phone": "9411223344",
+                "address": "Kochi, Kerala"
+            }
+        },
+        {
+            "studentId": "23DCE299",
+            "fullName": "Arnav Khanna",
+            "major": "Computer Engineering",
+            "graduationYear": 2026,
+            "gpa": 9.72,
+            "extracurricularActivities": [
+                "Valedictorian Candidate",
+                "Google Summer of Code 2025",
+                "Research Assistant - Data Science Lab"
+            ],
+            "contact": {
+                "email": "23dce299@charusat.edu.in",
+                "phone": "9522334455",
+                "address": "Chandigarh"
+            }
+        },
+        {
+            "studentId": "24DCE167",
+            "fullName": "Muskan Siddiqui",
+            "major": "Computer Engineering",
+            "graduationYear": 2027,
+            "gpa": 8.65,
+            "extracurricularActivities": [
+                "UI/UX Design Club",
+                "Rangoli Art Society",
+                "Hackathon Organizer"
+            ],
+            "contact": {
+                "email": "24dce167@charusat.edu.in",
+                "phone": "9633445566",
+                "address": "Lucknow, Uttar Pradesh"
+            }
+        },
+        {
+            "studentId": "25DME092",
+            "fullName": "Harsh Verma",
+            "major": "Mechanical Engineering",
+            "graduationYear": 2028,
+            "gpa": 8.11,
+            "extracurricularActivities": [
+                "Automobile Club",
+                "Volleyball Team",
+                "Chess Club Treasurer"
+            ],
+            "contact": {
+                "email": "25dme092@charusat.edu.in",
+                "phone": "9744556677",
+                "address": "Varanasi, Uttar Pradesh"
+            }
+        },
+        {
+            "studentId": "24DBI076",
+            "fullName": "Pooja Mishra",
+            "major": "Biomedical Engineering",
+            "graduationYear": 2027,
+            "gpa": 9.38,
+            "extracurricularActivities": [
+                "Medical Innovation Lab",
+                "Blood Donation Camp Organizer",
+                "Badminton Team Captain"
+            ],
+            "contact": {
+                "email": "24dbi076@charusat.edu.in",
+                "phone": "9855667788",
+                "address": "Bhopal, Madhya Pradesh"
+            }
+        },
+        {
+            "studentId": "25DEC054",
+            "fullName": "Dhruv Bhatia",
+            "major": "Electronics & Communication",
+            "graduationYear": 2028,
+            "gpa": 7.94,
+            "extracurricularActivities": [
+                "RoboWar Organizing Team",
+                "Drone Club Member",
+                "Filmmaking Society"
+            ],
+            "contact": {
+                "email": "25dec054@charusat.edu.in",
+                "phone": "9966778899",
+                "address": "Dehradun, Uttarakhand"
+            }
+        },
+        {
+            "studentId": "23DEC312",
+            "fullName": "Anjali Nair",
+            "major": "Electronics & Communication",
+            "graduationYear": 2026,
+            "gpa": 9.22,
+            "extracurricularActivities": [
+                "VLSI Research Project",
+                "Cultural Club Head",
+                "Classical Dance Performer"
+            ],
+            "contact": {
+                "email": "23dec312@charusat.edu.in",
+                "phone": "9177889900",
+                "address": "Thiruvananthapuram, Kerala"
+            }
+        },
+        {
+            "studentId": "24DCH065",
+            "fullName": "Aman Thakkar",
+            "major": "Chemical Engineering",
+            "graduationYear": 2027,
+            "gpa": 8.51,
+            "extracurricularActivities": [
+                "Green Energy Club",
+                "Table Tennis Team",
+                "Quizzing Society"
+            ],
+            "contact": {
+                "email": "24dch065@charusat.edu.in",
+                "phone": "9288990011",
+                "address": "Gandhidham, Gujarat"
+            }
+        },
+        {
+            "studentId": "25DCI033",
+            "fullName": "Siya Shah",
+            "major": "Civil Engineering",
+            "graduationYear": 2028,
+            "gpa": 8.79,
+            "extracurricularActivities": [
+                "Architecture & Planning Society",
+                "Eco Club",
+                "Painting Club"
+            ],
+            "contact": {
+                "email": "25dci033@charusat.edu.in",
+                "phone": "9399001122",
+                "address": "Porbandar, Gujarat"
+            }
+        },
+        {
+            "studentId": "23DCE345",
+            "fullName": "Karan Malhotra",
+            "major": "Computer Engineering",
+            "graduationYear": 2026,
+            "gpa": 8.83,
+            "extracurricularActivities": [
+                "Full-Stack Development Lead",
+                "Entrepreneurship Cell",
+                "Music Band - Guitarist"
+            ],
+            "contact": {
+                "email": "23dce345@charusat.edu.in",
+                "phone": "9400112233",
+                "address": "Bangalore, Karnataka"
+            }
+        },
+        {
+            "studentId": "26DCE102",
+            "fullName": "Aksh Virja",
+            "major": "Computer Engineering",
+            "graduationYear": 2029,
+            "gpa": 8.5,
+            "extracurricularActivities": [
+                "Newly Registered Member",
+                "Student Hub Portal"
+            ],
+            "contact": {
+                "email": "aksh.virja2026@charusat.edu.in",
+                "phone": "9274338033",
+                "address": "CHARUSAT Campus, Changa, Gujarat"
+            }
+        },
+        {
+            "studentId": "26MCA103",
+            "fullName": "Aksh Virja",
+            "major": "Computer Applications",
+            "graduationYear": 2027,
+            "gpa": 8.5,
+            "extracurricularActivities": [
+                "Newly Registered Member",
+                "Student Hub Portal"
+            ],
+            "contact": {
+                "email": "akshvirja46420@gmail.com",
+                "phone": "9274338033",
+                "address": "CHARUSAT Campus, Changa, Gujarat"
+            }
+        }
+    ]
+}

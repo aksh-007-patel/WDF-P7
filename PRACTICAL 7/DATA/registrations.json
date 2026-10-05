@@ -1,0 +1,47 @@
+{
+    "metadata": {
+        "dataset": "Student Registrations",
+        "version": "1.0.0",
+        "lastUpdated": "2026-10-05 11:53:57",
+        "totalRecords": 3
+    },
+    "records": [
+        {
+            "registrationId": "REG-2026-001",
+            "studentId": "25DCE125",
+            "name": "Diya Patel",
+            "email": "diya.patel@charusat.edu.in",
+            "mobile": "9876543210",
+            "course": "BTech",
+            "year": "1",
+            "gender": "Female",
+            "registeredAt": "2026-10-05 11:15:00"
+        },
+        {
+            "registrationId": "REG-2026-002",
+            "studentId": "26DCE102",
+            "name": "Aksh Virja",
+            "email": "aksh.virja2026@charusat.edu.in",
+            "mobile": "9274338033",
+            "course": "Computer Engineering",
+            "year": "2",
+            "gender": "Male",
+            "passwordHash": "$2y$10$4Ont.InlG3cKvXK0ujhe5O40rurJ/9R37o9btsem2HW68L5epFDRu",
+            "registeredAt": "2026-10-05 11:42:12",
+            "ipAddress": "127.0.0.1"
+        },
+        {
+            "registrationId": "REG-2026-003",
+            "studentId": "26MCA103",
+            "name": "Aksh Virja",
+            "email": "akshvirja46420@gmail.com",
+            "mobile": "9274338033",
+            "course": "MCA",
+            "year": "4",
+            "gender": "Male",
+            "passwordHash": "$2y$10$VNjT.q4vREJi/5WMGjmnce1mGSeIPgi0mi8GzALYkCtVz2zbh6vb2",
+            "registeredAt": "2026-10-05 11:53:57",
+            "ipAddress": "::1"
+        }
+    ]
+}

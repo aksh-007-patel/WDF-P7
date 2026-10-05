@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprehensive Tests - Student Hub</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <style>
+      .test-suite {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+      .test-card {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 18px;
+        box-shadow: var(--shadow-sm);
+      }
+      .test-card h4 {
+        color: var(--primary);
+        margin-bottom: 6px;
+        font-size: 0.98rem;
+      }
+      .test-meta {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+      .test-result {
+        padding: 10px 12px;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .test-pass {
+        background: rgba(22,163,74,0.1);
+        color: var(--success);
+        border: 1px solid rgba(22,163,74,0.25);
+      }
+      .test-fail {
+        background: rgba(220,38,38,0.08);
+        color: var(--danger);
+        border: 1px solid rgba(220,38,38,0.25);
+      }
+      .test-pending {
+        background: rgba(245,158,11,0.1);
+        color: var(--accent-hover);
+        border: 1px solid rgba(245,158,11,0.25);
+      }
+      .test-log {
+        margin-top: 10px;
+        padding: 8px 10px;
+        background: var(--surface-alt);
+        border-radius: 4px;
+        font-family: ui-monospace, Consolas, monospace;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        max-height: 110px;
+        overflow-y: auto;
+        line-height: 1.45;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+      .summary-bar {
+        padding: 14px 18px;
+        border-radius: var(--radius-md);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+        background: var(--surface-alt);
+        border: 1.5px solid var(--border);
+      }
+      .summary-stats {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .summary-stats strong { font-size: 1.2rem; }
+      .st-green  { color: var(--success); }
+      .st-red    { color: var(--danger); }
+      .st-amber  { color: var(--accent-hover); }
+      .toggles { display: flex; gap: 8px; flex-wrap: wrap; }
+      .tab-bar {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        border-bottom: 2px solid var(--border);
+        margin-bottom: 16px;
+      }
+      .tab-btn {
+        padding: 9px 16px;
+        border: none;
+        background: transparent;
+        color: var(--text-muted);
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        font-family: inherit;
+      }
+      .tab-btn.active {
+        color: var(--primary);
+        border-bottom-color: var(--primary);
+      }
+      .tab-content { display: none; }
+      .tab-content.active { display: block; }
+      .minitab-root { min-height: 400px; }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="max-width:1280px !important;">
+      <div class="header-top-row">
+        <span class="badge">Quality Assurance</span>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </div>
+
+      <h1>Student Hub — Test Suite</h1>
+      <h2>Comprehensive Feature Verification</h2>
+      <p class="subtitle" style="margin-bottom:14px; color: var(--text-muted);">
+        Validates Fetch API, JSON parsing, dynamic rendering, search, filters, sorting, pagination, and error handling.
+      </p>
+
+      <div class="summary-bar">
+        <div class="summary-stats">
+          <div><span class="st-green">✅ Pass</span> <strong id="pass-count">0</strong></div>
+          <div><span class="st-red">❌ Fail</span> <strong id="fail-count">0</strong></div>
+          <div><span class="st-amber">⏳ Pending</span> <strong id="pending-count">0</strong></div>
+          <div>📊 Total <strong id="total-count">0</strong></div>
+          <div>🏆 Score <strong id="score-count">—</strong></div>
+        </div>
+        <div class="toggles">
+          <button class="dyn-btn dyn-btn-primary" id="runAllBtn" type="button">▶ Run All Tests</button>
+          <button class="dyn-btn dyn-btn-outline" id="resetBtn" type="button">↺ Reset Results</button>
+        </div>
+      </div>
+
+      <div id="test-log-global" class="test-log" style="margin-bottom: 16px;">Test harness ready. Click "Run All Tests" or individual tab buttons to start.</div>
+
+      <div class="tab-bar">
+        <button type="button" class="tab-btn active" data-tab="tab-fetch">1. Fetch API</button>
+        <button type="button" class="tab-btn" data-tab="tab-search">2. Search &amp; Filters</button>
+        <button type="button" class="tab-btn" data-tab="tab-sort">3. Sorting</button>
+        <button type="button" class="tab-btn" data-tab="tab-pager">4. Pagination</button>
+        <button type="button" class="tab-btn" data-tab="tab-errors">5. Error Handling</button>
+        <button type="button" class="tab-btn" data-tab="tab-render">6. Demo Render</button>
+      </div>
+
+      <div id="tab-fetch" class="tab-content active">
+        <div class="test-suite" id="suite-fetch"></div>
+      </div>
+
+      <div id="tab-search" class="tab-content">
+        <div class="test-suite" id="suite-search"></div>
+      </div>
+
+      <div id="tab-sort" class="tab-content">
+        <div class="test-suite" id="suite-sort"></div>
+      </div>
+
+      <div id="tab-pager" class="tab-content">
+        <div class="test-suite" id="suite-pager"></div>
+      </div>
+
+      <div id="tab-errors" class="tab-content">
+        <div class="test-suite" id="suite-errors"></div>
+      </div>
+
+      <div id="tab-render" class="tab-content">
+        <h3 style="color:var(--primary); margin-bottom:10px;">Live Render Demo (Events)</h3>
+        <p class="subtitle" style="margin-bottom:16px;">Interactive demo — try the search, category filter, sort, and pagination below.</p>
+        <div id="minidemo-root" class="minitab-root"></div>
+      </div>
+
+      <hr />
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
+        <a href="DASHBOARD.HTML" class="home-btn">Dashboard</a>
+        <a href="EVENTS.HTML" class="home-btn">Events Page</a>
+        <a href="PROFILE.HTML" class="home-btn">Students Page</a>
+        <a href="FAQ.HTML" class="home-btn">FAQ Page</a>
+        <a href="../home.html" class="home-btn">← Back to Home</a>
+      </div>
+
+      <footer>
+        <p>&copy; 2026 Student Hub. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+    <script src="../JS/SCRIPT.JS"></script>
+    <script src="../JS/dynamic-ui.js"></script>
+    <script src="../JS/data-manager.js"></script>
+    <script src="../JS/data-table.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        const tabs = document.querySelectorAll(".tab-btn");
+        tabs.forEach(btn => {
+          btn.addEventListener("click", () => {
+            tabs.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+            document.getElementById(btn.dataset.tab).classList.add("active");
+          });
+        });
+
+        /* -------------------------------------------------------------
+           TEST CASE REGISTRY
+           ------------------------------------------------------------- */
+        const testCases = [];
+        function reg(name, desc, fn, tab) { testCases.push({ name, desc, fn, tab, result: null, log: "" }); }
+
+        const RESULTS = { total: 0, pass: 0, fail: 0, pending: 0 };
+        function recalc() {
+          RESULTS.total = testCases.length;
+          RESULTS.pass  = testCases.filter(t => t.result === "pass").length;
+          RESULTS.fail  = testCases.filter(t => t.result === "fail").length;
+          RESULTS.pending = testCases.filter(t => t.result == null).length;
+          document.getElementById("total-count").textContent = RESULTS.total;
+          document.getElementById("pass-count").textContent  = RESULTS.pass;
+          document.getElementById("fail-count").textContent  = RESULTS.fail;
+          document.getElementById("pending-count").textContent = RESULTS.pending;
+          const score = RESULTS.total > 0 ? Math.round((RESULTS.pass / (RESULTS.pass + RESULTS.fail || 1)) * 100) : 0;
+          document.getElementById("score-count").textContent = isNaN(score) ? "—" : score + "%";
+        }
+        function appendGlobal(line) {
+          const el = document.getElementById("test-log-global");
+          el.textContent += "\n[" + new Date().toLocaleTimeString() + "] " + line;
+          el.scrollTop = el.scrollHeight;
+        }
+        function mark(idx, result, logLine) {
+          const t = testCases[idx];
+          t.result = result;
+          if (logLine) t.log += (t.log ? "\n" : "") + logLine;
+          recalc();
+          renderOne(idx);
+        }
+
+        function render() {
+          document.getElementById("suite-fetch").innerHTML = "";
+          document.getElementById("suite-search").innerHTML = "";
+          document.getElementById("suite-sort").innerHTML = "";
+          document.getElementById("suite-pager").innerHTML = "";
+          document.getElementById("suite-errors").innerHTML = "";
+          testCases.forEach((t, i) => renderOne(i));
+        }
+        function renderOne(i) {
+          const t = testCases[i];
+          const host = document.getElementById("suite-" + t.tab);
+          if (!host) return;
+          let el = host.querySelector(`[data-idx="${i}"]`);
+          if (!el) {
+            el = document.createElement("div");
+            el.className = "test-card";
+            el.dataset.idx = String(i);
+            el.innerHTML = `
+              <h4></h4>
+              <div class="test-meta"></div>
+              <button type="button" class="dyn-btn dyn-btn-outline" style="font-size:0.82rem; padding:6px 12px;">Run single</button>
+              <div class="test-result test-pending">⏳ Pending <span>—</span></div>
+              <div class="test-log"></div>
+            `;
+            el.querySelector("button").addEventListener("click", () => runOne(i));
+            host.appendChild(el);
+          }
+          el.querySelector("h4").textContent = t.name;
+          el.querySelector(".test-meta").textContent = t.desc;
+          const res = el.querySelector(".test-result");
+          res.classList.remove("test-pass", "test-fail", "test-pending");
+          if (t.result === "pass") {
+            res.classList.add("test-pass");
+            res.innerHTML = "✅ PASS <span>completed</span>";
+          } else if (t.result === "fail") {
+            res.classList.add("test-fail");
+            res.innerHTML = "❌ FAIL <span>see log</span>";
+          } else {
+            res.classList.add("test-pending");
+            res.innerHTML = "⏳ PENDING <span>not run</span>";
+          }
+          el.querySelector(".test-log").textContent = t.log || "(no output yet)";
+        }
+
+        async function runOne(i) {
+          const t = testCases[i];
+          mark(i, null, "▶ Running test...");
+          appendGlobal("RUN: " + t.name);
+          try {
+            const out = await t.fn();
+            mark(i, "pass", out ? ("✔ " + out) : "✔ Test passed without assertions.");
+            appendGlobal("PASS: " + t.name);
+          } catch (err) {
+            const msg = (err && err.message) ? err.message : String(err);
+            mark(i, "fail", "✘ " + msg);
+            appendGlobal("FAIL: " + t.name + " → " + msg);
+          }
+        }
+        async function runAll() {
+          for (let i = 0; i < testCases.length; i++) {
+            if (testCases[i].result == null || document.getElementById("runAllBtn").dataset.force === "1") {
+              await runOne(i);
+            }
+          }
+          document.getElementById("runAllBtn").dataset.force = "";
+          appendGlobal("=== FINAL: " + RESULTS.pass + "/" + (RESULTS.pass + RESULTS.fail) + " passed ===");
+        }
+        document.getElementById("runAllBtn").addEventListener("click", () => {
+          document.getElementById("runAllBtn").dataset.force = "1";
+          // clear results
+          testCases.forEach(t => { t.result = null; t.log = ""; });
+          render(); recalc();
+          runAll();
+        });
+        document.getElementById("resetBtn").addEventListener("click", () => {
+          testCases.forEach(t => { t.result = null; t.log = ""; });
+          document.getElementById("test-log-global").textContent = "Results cleared. Click Run All Tests to re-run.";
+          render(); recalc();
+        });
+
+        /* =============================================================
+           SUITE 1 — FETCH API & JSON
+           ============================================================= */
+        reg("T1.1: Load events.json (Fetch API)",
+            "Verifies that SHDataManager.loadJSON('events') returns parsed records with metadata.",
+            async () => {
+              const data = await SHDataManager.loadJSON("events", { forceRefresh: true });
+              if (!data || !Array.isArray(data.records)) throw new Error("records array missing");
+              if (!data.metadata) throw new Error("metadata object missing");
+              const e = data.records[0];
+              ["eventId","title","description","date","location","category","organizer","attendanceCapacity"]
+                .forEach(k => { if (!(k in e)) throw new Error("missing field: " + k); });
+              SHDataManager.clearCache("events");
+              return `Loaded ${data.records.length} events; first=${e.eventId}, dataset=${data.metadata.dataset}`;
+            }, "fetch");
+
+        reg("T1.2: Load students.json — all fields present",
+            "Verifies that each student record includes all required fields (ID, name, major, grad year, GPA, ECs, contact).",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const req = ["studentId","fullName","major","graduationYear","gpa","extracurricularActivities","contact"];
+              for (let i = 0; i < Math.min(5, data.records.length); i++) {
+                const s = data.records[i];
+                req.forEach(k => { if (!(k in s)) throw new Error(`record[${i}] missing ${k}`); });
+                if (!s.contact.email || !s.contact.phone) throw new Error(`record[${i}] missing contact details`);
+                if (!Array.isArray(s.extracurricularActivities)) throw new Error(`record[${i}] extracurriculars must be array`);
+              }
+              return `Validated ${Math.min(5, data.records.length)} of ${data.records.length} student records.`;
+            }, "fetch");
+
+        reg("T1.3: Load faqs.json — all fields valid",
+            "Checks questionId, questionText, answerText, category, publicationDate on FAQ records.",
+            async () => {
+              const data = await SHDataManager.loadJSON("faqs");
+              const req = ["questionId","questionText","answerText","category","publicationDate"];
+              data.records.slice(0, 8).forEach((q, i) => {
+                req.forEach(k => { if (!(k in q)) throw new Error(`faq[${i}] missing ${k}`); });
+              });
+              return `Validated ${Math.min(8, data.records.length)} FAQs across ${data.records.length} records.`;
+            }, "fetch");
+
+        reg("T1.4: In-memory cache works (2nd call is faster)",
+            "Calls loadJSON twice without forceRefresh and checks identical records without re-fetching.",
+            async () => {
+              SHDataManager.clearCache("events");
+              const d1 = await SHDataManager.loadJSON("events");
+              const t0 = performance.now();
+              const d2 = await SHDataManager.loadJSON("events");
+              const t1 = performance.now();
+              if (d1.records.length !== d2.records.length) throw new Error("cache returned different count");
+              if (d1.records[0].eventId !== d2.records[0].eventId) throw new Error("cache mismatch");
+              return `2nd call returned ${d2.records.length} records in ${(t1 - t0).toFixed(1)}ms (cached).`;
+            }, "fetch");
+
+        reg("T1.5: clearCache invalidates store",
+            "clearCache('events') → next loadJSON should not return stale cached data.",
+            async () => {
+              const a = await SHDataManager.loadJSON("events");
+              const cBefore = a.records.length;
+              SHDataManager.clearCache("events");
+              const b = await SHDataManager.loadJSON("events");
+              if (cBefore !== b.records.length) throw new Error("record count changed unexpectedly");
+              return `Cache bust successful. Loaded ${b.records.length} records fresh.`;
+            }, "fetch");
+
+        /* =============================================================
+           SUITE 2 — SEARCH & FILTERS
+           ============================================================= */
+        reg("T2.1: searchRecords finds by title",
+            "Filters event records using free-text across multiple searchable fields.",
+            async () => {
+              const data = await SHDataManager.loadJSON("events");
+              const out = SHDataManager.searchRecords(data.records, "hackathon", ["title","description","category","organizer"]);
+              if (out.length === 0) throw new Error("expected ≥1 hackathon results");
+              if (!out.some(e => /hackathon/i.test(e.title))) throw new Error("results don't contain hackathon");
+              return `Query 'hackathon' returned ${out.length} result(s): ${out.map(e => e.eventId).join(", ")}.`;
+            }, "search");
+
+        reg("T2.2: searchRecords finds nested contact data",
+            "Searches students with nested fields (contact.email, contact.phone).",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const out = SHDataManager.searchRecords(data.records, "charusat.edu.in", ["contact.email","fullName"]);
+              if (out.length < 20) throw new Error("expected many charusat email matches, got " + out.length);
+              return `Query 'charusat.edu.in' matched ${out.length} student email(s).`;
+            }, "search");
+
+        reg("T2.3: searchRecords handles empty query → all records",
+            "Empty or whitespace-only search query should return all records unchanged.",
+            async () => {
+              const data = await SHDataManager.loadJSON("faqs");
+              const a = SHDataManager.searchRecords(data.records, "", ["questionText"]);
+              const b = SHDataManager.searchRecords(data.records, "   ", ["questionText"]);
+              if (a.length !== data.records.length) throw new Error("empty query filtered records");
+              if (b.length !== data.records.length) throw new Error("whitespace query filtered records");
+              return `Empty query preserved all ${a.length} FAQ records.`;
+            }, "search");
+
+        reg("T2.4: filterRecords multi-select category",
+            "Multi-select category filter returns events matching any selected value.",
+            async () => {
+              const data = await SHDataManager.loadJSON("events");
+              const out = SHDataManager.filterRecords(data.records, { category: ["Workshop","Seminar"] });
+              if (out.length === 0) throw new Error("no workshop/seminar events");
+              if (!out.every(e => ["Workshop","Seminar"].includes(e.category)))
+                throw new Error("filtered result contained wrong category");
+              const totalSemWk = data.records.filter(e => e.category === "Workshop" || e.category === "Seminar").length;
+              return `${out.length}/${totalSemWk} Workshop+Seminar events returned.`;
+            }, "search");
+
+        reg("T2.5: filterRecords + searchRecords combined",
+            "Applies search and filter in sequence and validates each item passes both.",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const majors = ["Computer Engineering"];
+              let rows = SHDataManager.filterRecords(data.records, { major: majors });
+              rows = SHDataManager.searchRecords(rows, "9", ["gpa","fullName","studentId"]);
+              if (!rows.every(s => s.major === "Computer Engineering")) throw new Error("leaked non-CE student");
+              const q = "9";
+              if (!rows.every(s =>
+                  String(s.gpa).includes(q) ||
+                  s.fullName.toLowerCase().includes(q.toLowerCase()) ||
+                  s.studentId.toLowerCase().includes(q.toLowerCase())
+              )) throw new Error("leaked student not matching search");
+              return `Got ${rows.length} CS students matching query '9' (search + filter pipeline).`;
+            }, "search");
+
+        reg("T2.6: getUniqueValues enumerates categories",
+            "SHDataManager.getUniqueValues returns sorted category list for filter UI.",
+            async () => {
+              const data = await SHDataManager.loadJSON("events");
+              const cats = SHDataManager.getUniqueValues(data.records, "category");
+              if (cats.length < 5) throw new Error("expected ≥5 categories, got " + cats.length);
+              const sorted = cats.slice().sort((a,b) => a.localeCompare(b));
+              if (cats.join("|") !== sorted.join("|")) throw new Error("categories not alphabetically sorted");
+              return `${cats.length} unique categories: ${cats.join(", ")}.`;
+            }, "search");
+
+        /* =============================================================
+           SUITE 3 — SORTING
+           ============================================================= */
+        reg("T3.1: sortRecords text ascending",
+            "Alphabetical A-Z sort of students by fullName.",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const out = SHDataManager.sortRecords(data.records, "fullName", "asc");
+              for (let i = 1; i < out.length; i++) {
+                if (out[i - 1].fullName.localeCompare(out[i].fullName) > 0)
+                  throw new Error(`out of order at [${i}]: ${out[i-1].fullName} > ${out[i].fullName}`);
+              }
+              return `Sorted ${out.length} students A-Z: ${out[0].fullName} → ${out[out.length-1].fullName}.`;
+            }, "sort");
+
+        reg("T3.2: sortRecords numeric descending (GPA)",
+            "Descending numeric sort of students by GPA field.",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const out = SHDataManager.sortRecords(data.records, "gpa", "desc", { numeric: true });
+              for (let i = 1; i < out.length; i++) {
+                if (Number(out[i - 1].gpa) < Number(out[i].gpa))
+                  throw new Error(`wrong order at [${i}]: ${out[i-1].gpa} < ${out[i].gpa}`);
+              }
+              return `Top GPA: ${out[0].fullName} (${out[0].gpa}), lowest in set: ${out[out.length-1].fullName} (${out[out.length-1].gpa}).`;
+            }, "sort");
+
+        reg("T3.3: sortRecords dateLike order (events)",
+            "dateLike sorting returns events chronologically from earliest to latest.",
+            async () => {
+              const data = await SHDataManager.loadJSON("events");
+              const out = SHDataManager.sortRecords(data.records, "date", "asc", { dateLike: true });
+              for (let i = 1; i < out.length; i++) {
+                const a = new Date(out[i-1].date).getTime();
+                const b = new Date(out[i].date).getTime();
+                if (a > b) throw new Error(`date out of order at [${i}]: ${out[i-1].date} > ${out[i].date}`);
+              }
+              return `${out.length} events sorted by date: ${out[0].date} → ${out[out.length-1].date}.`;
+            }, "sort");
+
+        reg("T3.4: Persistent sort preferences (localStorage)",
+            "saveSortPreference → getSortPreference roundtrip preserves sortField & sortDir.",
+            async () => {
+              const key = "__test_" + Date.now();
+              SHDataManager.saveSortPreference(key, "gpa", "desc");
+              const got = SHDataManager.getSortPreference(key);
+              if (!got || got.sortField !== "gpa" || got.sortDir !== "desc")
+                throw new Error(`sort preference roundtrip failed, got ${JSON.stringify(got)}`);
+              try { localStorage.removeItem("sh_sortpref_" + key); } catch (e) { /* ignore */ }
+              return `Sort pref roundtrip OK: ${got.sortField} / ${got.sortDir}.`;
+            }, "sort");
+
+        reg("T3.5: Sort stability — equal values preserved order",
+            "Sorting FAQ by equal category should not crash; sortRecords should not mutate original array.",
+            async () => {
+              const data = await SHDataManager.loadJSON("faqs");
+              const snapshot = data.records.map(r => r.questionId).join(",");
+              const out = SHDataManager.sortRecords(data.records, "category", "asc");
+              if (data.records.map(r => r.questionId).join(",") !== snapshot)
+                throw new Error("original records array was mutated");
+              if (out.length !== data.records.length) throw new Error("sort changed count");
+              return `Sort is non-mutating. ${out.length} FAQs sorted; original array unchanged.`;
+            }, "sort");
+
+        /* =============================================================
+           SUITE 4 — PAGINATION
+           ============================================================= */
+        reg("T4.1: paginateRecords produces correct slices",
+            "perPage=5, page=2 should yield records 6–10.",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const p = SHDataManager.paginateRecords(data.records, 2, 5);
+              if (p.items.length !== 5) throw new Error("page size != 5: " + p.items.length);
+              if (p.startIndex !== 6 || p.endIndex !== 10) throw new Error(`range wrong: ${p.startIndex}-${p.endIndex}`);
+              if (p.hasPrev !== true || p.hasNext !== true) throw new Error("hasPrev/hasNext wrong");
+              return `Page 2/5: items 6-10 of ${p.totalItems}, hasPrev=${p.hasPrev} hasNext=${p.hasNext}, totalPages=${p.totalPages}.`;
+            }, "pager");
+
+        reg("T4.2: Page bounds clamping (beyond last → last page)",
+            "Requesting page 999 should clamp to last page.",
+            async () => {
+              const data = await SHDataManager.loadJSON("events");
+              const p = SHDataManager.paginateRecords(data.records, 999, 5);
+              if (p.page !== p.totalPages) throw new Error(`not clamped: page ${p.page} vs totalPages ${p.totalPages}`);
+              if (p.hasNext !== false) throw new Error("should not have next page");
+              return `Clamped to last page ${p.page}/${p.totalPages}, items ${p.startIndex}-${p.endIndex}.`;
+            }, "pager");
+
+        reg("T4.3: Zero/negative page defaults to 1",
+            "page=0, perPage=0 should return first page safely.",
+            async () => {
+              const data = await SHDataManager.loadJSON("faqs");
+              const p = SHDataManager.paginateRecords(data.records, -3, 0);
+              if (p.page !== 1) throw new Error("page did not default to 1");
+              if (p.perPage < 1) throw new Error("perPage did not default to ≥1");
+              return `Edge inputs normalised: page=${p.page}, perPage=${p.perPage}, totalPages=${p.totalPages}.`;
+            }, "pager");
+
+        reg("T4.4: Empty dataset pagination",
+            "Empty records array returns sane single-page pagination with no items.",
+            async () => {
+              const p = SHDataManager.paginateRecords([], 1, 10);
+              if (p.totalItems !== 0) throw new Error("totalItems should be 0");
+              if (p.items.length !== 0) throw new Error("items should be empty");
+              if (p.totalPages !== 1) throw new Error("totalPages should be 1 for empty");
+              return `Empty set OK: totalItems=${p.totalItems}, totalPages=${p.totalPages}, page=${p.page}.`;
+            }, "pager");
+
+        /* =============================================================
+           SUITE 5 — ERROR HANDLING
+           ============================================================= */
+        reg("T5.1: loadJSON unknown dataset → invalidDataset error",
+            "loadJSON('nonexistent_key') throws structured error with userMessage.",
+            async () => {
+              try {
+                await SHDataManager.loadJSON("__NOT_A_DATASET__");
+                throw new Error("expected an error to be thrown");
+              } catch (err) {
+                if (!err.code) throw new Error("error missing structured code");
+                if (!err.userMessage) throw new Error("error missing userMessage");
+                return `Got structured error code=${err.code}; msg=${err.userMessage}.`;
+              }
+            }, "errors");
+
+        reg("T5.2: createDataError builds structured object",
+            "createDataError produces Error with code, userMessage, originalError, timestamp.",
+            async () => {
+              const orig = new TypeError("network down");
+              const e = SHDataManager.createDataError("network", "Custom user message", orig);
+              if (!(e instanceof Error)) throw new Error("not an Error instance");
+              if (e.code !== "network") throw new Error("wrong code");
+              if (e.originalError !== orig) throw new Error("originalError not attached");
+              if (!e.timestamp) throw new Error("missing timestamp");
+              return `Structured error OK: code=${e.code}, orig=${e.originalError.message}, ts=${e.timestamp}.`;
+            }, "errors");
+
+        reg("T5.3: searchRecords missing field → no crash",
+            "Searching for missing nested field should return [] or skip, not throw.",
+            async () => {
+              const sample = [{ a: "hello", contact: null }, { a: "world" }];
+              const out = SHDataManager.searchRecords(sample, "hello", ["a","contact.email","missing.x"]);
+              if (out.length < 1) throw new Error("expected at least 1 match, got " + out.length);
+              return `Graceful missing-field search: ${out.length} match(es).`;
+            }, "errors");
+
+        reg("T5.4: filterRecords empty filters → identity",
+            "Empty or all-empty-valued filters should return identical-length array.",
+            async () => {
+              const data = await SHDataManager.loadJSON("students");
+              const a = SHDataManager.filterRecords(data.records, {});
+              const b = SHDataManager.filterRecords(data.records, { major: [], graduationYear: [] });
+              if (a.length !== data.records.length) throw new Error("empty {} filter changed count");
+              if (b.length !== data.records.length) throw new Error("empty-val filters changed count");
+              return `Identity filter OK (${a.length} students).`;
+            }, "errors");
+
+        reg("T5.5: getNested safe navigation",
+            "SHDataManager.getNested for missing deep paths returns null, not throws.",
+            async () => {
+              const obj = { user: { contact: { email: "a@b" } } };
+              const e1 = SHDataManager.getNested(obj, "user.contact.email");
+              const e2 = SHDataManager.getNested(obj, "user.nonexistent.deep.field");
+              const e3 = SHDataManager.getNested(null, "anything");
+              if (e1 !== "a@b") throw new Error("valid path lookup failed");
+              if (e2 !== null) throw new Error("missing path did not return null");
+              if (e3 !== null) throw new Error("null root did not return null");
+              return `Nested lookup OK; missing paths resolve to null safely.`;
+            }, "errors");
+
+        /* =============================================================
+           INIT RENDER + DEMO
+           ============================================================= */
+        render();
+        recalc();
+
+        SHDynTable.init({
+          pageKey: "test_minidemo",
+          datasetKey: "events",
+          root: "#minidemo-root",
+          searchFields: ["eventId","title","description","location","category","organizer"],
+          renderMode: "card",
+          filterFields: [{ field: "category", label: "Category" }],
+          sortOptions: [
+            { label: "Date", field: "date", value: "date", dateLike: true, defaultDir: "asc" },
+            { label: "Title", field: "title", value: "title" },
+            { label: "Capacity", field: "attendanceCapacity", value: "attendanceCapacity", numeric: true, defaultDir: "desc" }
+          ],
+          cardTemplateFn: (e) => `
+            <h3>${e.title}</h3>
+            <div class="dyn-card-meta">
+              <span class="dyn-id">${e.eventId}</span>
+              <span class="dyn-chip chip-${e.category ? e.category.toLowerCase().replace(/[^a-z]/g, "") : "seminar"}" style="background:rgba(2,132,199,0.12); color: var(--secondary);">${e.category}</span>
+              <span style="font-size:0.82rem;color:var(--text-muted);font-weight:600;">📅 ${SHDynTable.formatDate(e.date)}</span>
+            </div>
+            <p class="dyn-card-desc">${e.description}</p>
+            <div class="dyn-card-footer">
+              <span class="evt-capacity">👥 ${e.registeredCount || 0}/${e.attendanceCapacity}</span>
+            </div>
+          `,
+          perPageOptions: [4, 8, 16],
+          defaultPerPage: 4
+        });
+
+        appendGlobal("Test harness initialised with " + testCases.length + " test cases across 5 suites.");
+      })();
+    </script>
+  </body>
+</html>

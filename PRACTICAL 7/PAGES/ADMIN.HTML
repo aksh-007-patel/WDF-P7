@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Student Hub</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="container admin-container">
+      <div class="header-top-row">
+        <span class="badge">Administrative Panel</span>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </div>
+
+      <h1>Student Hub</h1>
+      <h2>Admin Overview</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="adm-students">32</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="adm-events">26</div>
+          <div class="stat-label">Campus Events</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="adm-registrations">2</div>
+          <div class="stat-label">Registrations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="adm-contacts">3</div>
+          <div class="stat-label">Contact Queries</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px; margin: 20px 0;">
+        <a href="EVENTS.HTML" class="home-btn" style="text-align:center; padding:12px;">📅 Manage &amp; Add Events</a>
+        <a href="PROFILE.HTML" class="home-btn" style="text-align:center; padding:12px;">🎓 Manage &amp; Add Students</a>
+        <a href="REGISTER.HTML" class="home-btn" style="text-align:center; padding:12px;">📝 Registration Portal</a>
+        <a href="CONTACT.HTML" class="home-btn" style="text-align:center; padding:12px;">📬 Contact Messages</a>
+      </div>
+
+      <form id="noticeForm" onsubmit="event.preventDefault(); alert('Notice successfully broadcasted to campus dashboard!'); this.reset();">
+        <label for="adm_notice">Broadcast University Notice</label>
+        <input type="text" id="adm_notice" placeholder="Enter notice announcement (e.g. Mid-term exam schedule announced)" required />
+
+        <div class="buttons">
+          <input type="submit" value="POST NOTICE" />
+          <input type="reset" value="CLEAR" />
+        </div>
+      </form>
+
+      <a href="../home.html" class="home-btn">← Back to Home</a>
+
+      <hr />
+
+      <footer>
+        <p>&copy; 2026 Student Hub. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+    <script src="../JS/SCRIPT.JS"></script>
+  </body>
+</html>

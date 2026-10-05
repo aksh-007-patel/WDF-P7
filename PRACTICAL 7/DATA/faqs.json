@@ -1,0 +1,226 @@
+{
+  "metadata": {
+    "dataset": "Frequently Asked Questions",
+    "version": "1.0.0",
+    "lastUpdated": "2026-10-05",
+    "totalRecords": 24
+  },
+  "records": [
+    {
+      "questionId": "FAQ-001",
+      "questionText": "How do I log in to the Student Portal?",
+      "answerText": "Enter your registered username (your university-issued student ID, e.g. 25DCE124) and password, then click the Login button on the login page. Your default password is your date of birth in DDMMYYYY format — you will be prompted to change it on first login. Make sure Caps Lock is off and that you are using your university email. If your account is locked after 5 failed attempts, please wait 30 minutes or contact the IT Help Desk.",
+      "category": "Account & Login",
+      "publicationDate": "2026-01-15",
+      "views": 8542,
+      "helpful": 94
+    },
+    {
+      "questionId": "FAQ-002",
+      "questionText": "How can I reset my password?",
+      "answerText": "Click the Forgot Password link on the login page and follow the step-by-step instructions sent to your registered email address. Password reset links expire in 15 minutes. If you don't receive the email within 5 minutes, check your spam folder or contact support@charusat.ac.in.",
+      "category": "Account & Login",
+      "publicationDate": "2026-01-15",
+      "views": 6230,
+      "helpful": 91
+    },
+    {
+      "questionId": "FAQ-003",
+      "questionText": "How do I check my attendance?",
+      "answerText": "After logging in, navigate to the Dashboard and click Attendance in the sidebar. You can view subject-wise attendance percentages and download the report as a PDF. Your attendance is updated every weekday by 6 PM. You need a minimum of 75% attendance per subject to be eligible to sit the semester exam. A red indicator means you are below the threshold — you may raise a grievance from the Dashboard if you believe there is an error.",
+      "category": "Academics",
+      "publicationDate": "2026-01-20",
+      "views": 9876,
+      "helpful": 88
+    },
+    {
+      "questionId": "FAQ-004",
+      "questionText": "How do I view my exam results?",
+      "answerText": "Click the Results section in your Dashboard. Results are published within 72 hours of the exam being finalised. Grades are displayed as SPI (Semester Performance Index) and CPI (Cumulative Performance Index). You may also download a digitally signed mark sheet for official use by clicking the Download PDF button.",
+      "category": "Academics",
+      "publicationDate": "2026-01-20",
+      "views": 8901,
+      "helpful": 93
+    },
+    {
+      "questionId": "FAQ-005",
+      "questionText": "How can I contact the college support team?",
+      "answerText": "Go to the Contact Us page or email the support team at support@charusat.ac.in. Support hours are Mon–Sat, 9 AM – 5 PM. Phone: +91-2697-265 000 (Ext. 101). Office: IT Help Desk, Admin Block, CHARUSAT Campus, Changa – 388421.",
+      "category": "Support",
+      "publicationDate": "2026-01-10",
+      "views": 5432,
+      "helpful": 90
+    },
+    {
+      "questionId": "FAQ-006",
+      "questionText": "How do I register for a new semester?",
+      "answerText": "Visit the Registration page before the published deadline. Complete all mandatory fields and ensure your fee payment is confirmed. Registration opens 2 weeks before the semester start date. You will need to: fill in personal details, select your courses and electives, upload required documents, pay semester fee via the payment portal, and submit. You will receive an email confirmation within 24 hours.",
+      "category": "Registration",
+      "publicationDate": "2026-02-01",
+      "views": 7654,
+      "helpful": 89
+    },
+    {
+      "questionId": "FAQ-007",
+      "questionText": "What documents are required for semester registration?",
+      "answerText": "You need: 1) Scanned copy of passport-sized photograph (JPEG, max 200 KB), 2) Scanned signature (JPEG, max 100 KB), 3) Previous semester mark sheet (PDF only), 4) Fee payment receipt (if paid offline). All documents must be clear and legible. Incorrect or blurry documents may delay your registration approval.",
+      "category": "Registration",
+      "publicationDate": "2026-02-05",
+      "views": 4321,
+      "helpful": 87
+    },
+    {
+      "questionId": "FAQ-008",
+      "questionText": "How do I apply for a scholarship?",
+      "answerText": "Log in and go to Dashboard → Scholarships section. Available scholarships are listed with eligibility criteria. Click Apply Now on the scholarship you qualify for, fill in the form, and upload supporting documents such as income certificate, previous year mark sheet, and category certificate (if applicable). Deadlines and award amounts are mentioned on each scholarship card.",
+      "category": "Fees & Scholarships",
+      "publicationDate": "2026-03-01",
+      "views": 5678,
+      "helpful": 92
+    },
+    {
+      "questionId": "FAQ-009",
+      "questionText": "What is the fee structure for my course?",
+      "answerText": "The detailed fee structure for all programs is available under Dashboard → Finance → Fee Structure. You can view tuition fees, exam fees, hostel fees, and other charges separately. The fee structure is also published on the official CHARUSAT website under the Academics section. For payment plans and instalment options, contact the accounts office at accounts@charusat.ac.in.",
+      "category": "Fees & Scholarships",
+      "publicationDate": "2026-03-05",
+      "views": 6543,
+      "helpful": 86
+    },
+    {
+      "questionId": "FAQ-010",
+      "questionText": "How do I book a hostel room?",
+      "answerText": "Hostel bookings open 1 month before semester start. Go to Student Life → Hostel Management. Select your preferred hostel, choose a room type (single/double/triple occupancy), check availability, and pay the hostel fee online to confirm your booking. Allocation is on a first-come-first-served basis. Waitlist option is available when rooms are full.",
+      "category": "Campus Life",
+      "publicationDate": "2026-03-10",
+      "views": 4567,
+      "helpful": 85
+    },
+    {
+      "questionId": "FAQ-011",
+      "questionText": "What are the hostel rules and timings?",
+      "answerText": "Hostel check-in time: 6:00 AM – 10:00 PM. Girls' hostel curfew: 8:30 PM. Boys' hostel curfew: 10:00 PM. Visitors are allowed only between 10 AM – 5 PM with a valid ID at the reception. Common room, gym, and mess timings are posted on the notice board inside each hostel. For late-entry requests, apply via the portal at least 24 hours in advance.",
+      "category": "Campus Life",
+      "publicationDate": "2026-03-12",
+      "views": 3456,
+      "helpful": 83
+    },
+    {
+      "questionId": "FAQ-012",
+      "questionText": "How do I enroll in a club or student chapter?",
+      "answerText": "Go to Student Life → Clubs & Chapters. Browse all registered clubs — from technical (IEEE, ACM, Robotics) to cultural (Dance, Music, Drama) and sports clubs. Click Join on your preferred club, fill in your areas of interest, and submit. Club coordinators will contact you via email within 7 days about orientation and membership fees (if any).",
+      "category": "Campus Life",
+      "publicationDate": "2026-03-15",
+      "views": 3890,
+      "helpful": 90
+    },
+    {
+      "questionId": "FAQ-013",
+      "questionText": "How do I get my exam admit card?",
+      "answerText": "Admit cards are released 10 days before the exam start date. Go to Dashboard → Examinations → Admit Card. Verify your personal details, exam subjects, and assigned center. Download and print the admit card — you must carry it along with a valid photo ID (college ID card / Aadhaar card) to every exam. Entry without admit card will be denied.",
+      "category": "Academics",
+      "publicationDate": "2026-04-01",
+      "views": 7890,
+      "helpful": 95
+    },
+    {
+      "questionId": "FAQ-014",
+      "questionText": "Can I apply for re-evaluation of answer sheets?",
+      "answerText": "Yes, re-evaluation applications open within 7 days of result declaration. Go to Results → Apply for Re-evaluation. Select the subject(s), pay the re-evaluation fee of ₹500 per paper, and submit. Re-evaluation results are declared within 15 working days. If marks increase by 10% or more, the fee is refunded.",
+      "category": "Academics",
+      "publicationDate": "2026-04-05",
+      "views": 2345,
+      "helpful": 84
+    },
+    {
+      "questionId": "FAQ-015",
+      "questionText": "How do I request a transcript or degree certificate?",
+      "answerText": "Go to Dashboard → Academics → Documents Request. Select the type of document you need (Transcript, Degree Certificate, Migration Certificate, Bonafide Certificate, etc.), provide delivery address, and pay the document processing fee. Physical copies are dispatched within 10-15 working days via registered post. Digital copies with e-signature are available for download within 48 hours.",
+      "category": "Academics",
+      "publicationDate": "2026-04-10",
+      "views": 3210,
+      "helpful": 88
+    },
+    {
+      "questionId": "FAQ-016",
+      "questionText": "What placements does the university offer?",
+      "answerText": "Our Training & Placement Cell invites 400+ companies every year across IT, Core Engineering, Finance, Consulting, and R&D sectors. Average package for 2025 batch was ₹6.5 LPA with highest package of ₹28 LPA. Top recruiters include TCS, Infosys, Wipro, Reliance, L&T, Amazon, Accenture, Cognizant, and many more. Placement drives start from the 5th semester onwards.",
+      "category": "Career & Placement",
+      "publicationDate": "2026-05-01",
+      "views": 7432,
+      "helpful": 91
+    },
+    {
+      "questionId": "FAQ-017",
+      "questionText": "How do I register for campus placement drives?",
+      "answerText": "Upload your latest resume on the Placement Portal (Dashboard → Placements → My Profile). Keep your CGPA, projects, skills, and contact details updated. When a company drive is announced, check the eligibility criteria (CGPA cut-off, backlog policy) and click Register. You will receive a confirmation email with exam date, venue, and preparation tips. Attend all training sessions for best results.",
+      "category": "Career & Placement",
+      "publicationDate": "2026-05-05",
+      "views": 5678,
+      "helpful": 89
+    },
+    {
+      "questionId": "FAQ-018",
+      "questionText": "Are there internship opportunities for students?",
+      "answerText": "Yes! The university offers both paid and unpaid internships through the Placement Cell. You can also apply for the Summer Internship Program (SIP) which is mandatory for 3rd-year students. Long-term 6-month internships are available as part of the curriculum for select programs. Stipend ranges from ₹5,000 to ₹40,000 per month depending on the company and role.",
+      "category": "Career & Placement",
+      "publicationDate": "2026-05-10",
+      "views": 4321,
+      "helpful": 87
+    },
+    {
+      "questionId": "FAQ-019",
+      "questionText": "How do I report a technical issue with the portal?",
+      "answerText": "Click the Help & Support button at the bottom right of every page and select Report a Bug. Fill in the form with: 1) Description of the issue, 2) Steps to reproduce, 3) Screenshot (if applicable), 4) Your browser and device details. A support ticket will be generated and you will receive updates via email. Response time is 24-48 hours on working days.",
+      "category": "Support",
+      "publicationDate": "2026-05-15",
+      "views": 1234,
+      "helpful": 92
+    },
+    {
+      "questionId": "FAQ-020",
+      "questionText": "What is the grading system followed?",
+      "answerText": "CHARUSAT follows a 10-point CGPA system: 10 (O - Outstanding), 9 (A+ - Excellent), 8 (A - Very Good), 7 (B+ - Good), 6 (B - Above Average), 5 (C - Average), 4 (P - Pass), 0 (F - Fail). Grade point for a course = credit × grade earned. SPI = sum of grade points ÷ total semester credits. CPI = weighted average of all semesters' SPI.",
+      "category": "Academics",
+      "publicationDate": "2026-01-25",
+      "views": 6789,
+      "helpful": 94
+    },
+    {
+      "questionId": "FAQ-021",
+      "questionText": "How many backlogs are allowed per semester?",
+      "answerText": "You can have a maximum of 3 active backlogs per semester. If you have 4 or more backlogs, you will be detained and will not be allowed to register for the next semester until you clear the backlog papers. Detention rules apply strictly as per the university ordinance. Supplementary exams are conducted two months after the regular exam results.",
+      "category": "Academics",
+      "publicationDate": "2026-02-10",
+      "views": 3456,
+      "helpful": 86
+    },
+    {
+      "questionId": "FAQ-022",
+      "questionText": "Does the college provide transport facilities?",
+      "answerText": "Yes, the university operates a fleet of 40+ buses covering major cities: Anand, Nadiad, Ahmedabad, Vadodara, Kheda, and surrounding towns. Bus pass can be purchased from Dashboard → Transport → Buy Pass. Monthly pass fee: ₹2,000, Semester pass: ₹9,500. Bus route, timetable, and live tracking are available on the Student Hub app.",
+      "category": "Campus Life",
+      "publicationDate": "2026-03-20",
+      "views": 4567,
+      "helpful": 85
+    },
+    {
+      "questionId": "FAQ-023",
+      "questionText": "How do I apply for leave or outstation permission?",
+      "answerText": "Hostel residents: Apply via Dashboard → Hostel → Leave Request. Select leave type (day outstation), enter dates, reason, and local guardian contact. Your warden and parents will be notified via SMS. Approval is granted within 24 hours. Day scholars needing exam leave: Submit a medical certificate or genuine reason document to your department office.",
+      "category": "Campus Life",
+      "publicationDate": "2026-03-25",
+      "views": 2890,
+      "helpful": 82
+    },
+    {
+      "questionId": "FAQ-024",
+      "questionText": "Can I change my branch or major after admission?",
+      "answerText": "Branch change (internal sliding) is available after 1st year (2nd semester onwards) based on merit. You need a minimum CGPA of 8.5 and no active backlogs to be eligible. Application window opens in June. Seats are limited (max 5% of sanctioned intake per branch). The change of branch form is available on the Academic section of the Dashboard.",
+      "category": "Registration",
+      "publicationDate": "2026-06-01",
+      "views": 3123,
+      "helpful": 88
+    }
+  ]
+}

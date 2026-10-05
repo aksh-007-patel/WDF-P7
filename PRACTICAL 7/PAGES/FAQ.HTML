@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Hub - FAQ</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <!-- ── NOTIFICATION BANNER (Component 4) ─────────────────────────── -->
+    <div class="sh-banner sh-banner-warning"
+         data-banner-key="faq-tip"
+         data-auto-dismiss="10000"
+         role="alert"
+         aria-live="polite">
+      <span class="sh-banner-msg">
+        💡 <strong>Tip:</strong> Click any question below to expand the answer. Use the search bar &amp; filters to find topics quickly.
+      </span>
+      <button class="sh-banner-close" aria-label="Dismiss tip">×</button>
+    </div>
+
+    <div class="container faq-container">
+      <div class="header-top-row">
+        <span class="badge">Help Center</span>
+        <!-- Light / Dark Theme Switcher (Component 6) -->
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme" aria-pressed="false">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </div>
+
+      <h1>STUDENT HUB</h1>
+      <h2>FAQ — Frequently Asked Questions</h2>
+      <p class="subtitle" style="margin-bottom:22px; color: var(--text-muted);">
+        Browse the knowledge base. Search by keyword, filter by category, and sort questions.
+      </p>
+
+      <!-- Dynamic FAQ root (replaces static accordion) -->
+      <div id="faqs-root" aria-live="polite"></div>
+
+      <br />
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
+        <a href="DASHBOARD.HTML" class="home-btn">Dashboard</a>
+        <a href="../home.html" class="home-btn">← Back to Home</a>
+      </div>
+
+      <hr />
+      <footer>
+        <p>&copy; 2026 Student Hub. All Rights Reserved.</p>
+      </footer>
+    </div><!-- /container -->
+
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         MODAL POPUPS (Component 2) — preserved from original static FAQ
+         ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Modal: Login Help -->
+    <div id="modal-login" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
+      <div class="sh-modal-content">
+        <button class="sh-modal-close" aria-label="Close">×</button>
+        <div class="sh-modal-icon">🔐</div>
+        <h3 id="modal-login-title">Logging In to Student Hub</h3>
+        <p>
+          Use your <strong>university-issued student ID</strong> (e.g. <code>25DCE124</code>) as
+          your username. Your default password is your <strong>date of birth</strong> in
+          <code>DDMMYYYY</code> format — you will be prompted to change it on first login.
+        </p>
+        <p>
+          If your account is locked after 5 failed attempts, please wait
+          <strong>30 minutes</strong> or contact the IT Help Desk.
+        </p>
+        <div class="sh-modal-footer">
+          <button class="sh-btn-outline" onclick="SHModal.close(document.getElementById('modal-login'))">Close</button>
+          <a href="LOGIN.HTML" class="sh-btn-primary" style="text-decoration:none;">Go to Login</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Password Reset -->
+    <div id="modal-password" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-password-title">
+      <div class="sh-modal-content">
+        <button class="sh-modal-close" aria-label="Close">×</button>
+        <div class="sh-modal-icon">🔑</div>
+        <h3 id="modal-password-title">Resetting Your Password</h3>
+        <p>
+          <strong>Step 1:</strong> Click <em>Forgot Password</em> on the Login page.<br/>
+          <strong>Step 2:</strong> Enter your registered university email address.<br/>
+          <strong>Step 3:</strong> Check your inbox for the reset link (valid for 15 min).<br/>
+          <strong>Step 4:</strong> Set a new password — must be at least 6 characters and include a letter and a number.
+        </p>
+        <p>If you don't receive the email within 5 minutes, check your spam folder or contact <a href="mailto:support@charusat.ac.in">support@charusat.ac.in</a>.</p>
+        <div class="sh-modal-footer">
+          <button class="sh-btn-primary" onclick="SHModal.close(document.getElementById('modal-password'))">Got it!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Attendance -->
+    <div id="modal-attendance" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-attendance-title">
+      <div class="sh-modal-content">
+        <button class="sh-modal-close" aria-label="Close">×</button>
+        <div class="sh-modal-icon">📊</div>
+        <h3 id="modal-attendance-title">Checking Your Attendance</h3>
+        <p>
+          Your attendance is updated every weekday by <strong>6 PM</strong>. You need a minimum
+          of <strong>75 %</strong> attendance per subject to be eligible to sit the semester exam.
+        </p>
+        <p>
+          A red indicator means you are below the threshold. You may raise a grievance from the
+          Dashboard if you believe there is an error.
+        </p>
+        <div class="sh-modal-footer">
+          <button class="sh-btn-outline" onclick="SHModal.close(document.getElementById('modal-attendance'))">Close</button>
+          <a href="DASHBOARD.HTML" class="sh-btn-primary" style="text-decoration:none;">Open Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Results -->
+    <div id="modal-results" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-results-title">
+      <div class="sh-modal-content">
+        <button class="sh-modal-close" aria-label="Close">×</button>
+        <div class="sh-modal-icon">📋</div>
+        <h3 id="modal-results-title">Viewing Exam Results</h3>
+        <p>
+          Results are published on the Dashboard under <em>My Results → Semester</em>.
+          Grades are displayed as <strong>SPI</strong> (Semester Performance Index) and
+          <strong>CPI</strong> (Cumulative Performance Index).
+        </p>
+        <p>
+          To download your official mark sheet, click the <strong>Download PDF</strong> button.
+          The document is digitally signed and valid for official purposes.
+        </p>
+        <div class="sh-modal-footer">
+          <button class="sh-btn-primary" onclick="SHModal.close(document.getElementById('modal-results'))">Understood</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Contact -->
+    <div id="modal-contact" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-contact-title">
+      <div class="sh-modal-content">
+        <button class="sh-modal-close" aria-label="Close">×</button>
+        <div class="sh-modal-icon">📞</div>
+        <h3 id="modal-contact-title">Contacting Support</h3>
+        <p><strong>Email:</strong> <a href="mailto:support@charusat.ac.in">support@charusat.ac.in</a></p>
+        <p><strong>Phone:</strong> +91-2697-265 000 (Ext. 101)</p>
+        <p><strong>Office:</strong> IT Help Desk, Admin Block, CHARUSAT Campus, Changa – 388421</p>
+        <p><strong>Hours:</strong> Mon–Sat, 9 AM – 5 PM (except public holidays)</p>
+        <div class="sh-modal-footer">
+          <button class="sh-btn-outline" onclick="SHModal.close(document.getElementById('modal-contact'))">Close</button>
+          <a href="CONTACT.HTML" class="sh-btn-primary" style="text-decoration:none;">Contact Form</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Register -->
+    <div id="modal-register" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-register-title">
+      <div class="sh-modal-content">
+        <button class="sh-modal-close" aria-label="Close">×</button>
+        <div class="sh-modal-icon">📝</div>
+        <h3 id="modal-register-title">Semester Registration Guide</h3>
+        <p>
+          Registration opens <strong>2 weeks</strong> before the semester start date.
+          Complete the following to finish your registration:
+        </p>
+        <p>
+          ✅ Fill in personal details<br/>
+          ✅ Select your courses / electives<br/>
+          ✅ Upload required documents<br/>
+          ✅ Pay semester fee via the payment portal<br/>
+          ✅ Submit — you will receive a confirmation email.
+        </p>
+        <div class="sh-modal-footer">
+          <button class="sh-btn-outline" onclick="SHModal.close(document.getElementById('modal-register'))">Close</button>
+          <a href="REGISTER.HTML" class="sh-btn-primary" style="text-decoration:none;">Register Now</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="../JS/SCRIPT.JS"></script>
+    <script src="../JS/dynamic-ui.js"></script>
+    <script src="../JS/data-manager.js"></script>
+    <script src="../JS/data-table.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        SHDynTable.init({
+          pageKey: "faqs",
+          datasetKey: "faqs",
+          root: "#faqs-root",
+          searchFields: ["questionId", "questionText", "answerText", "category"],
+          renderMode: "faq",
+          filterFields: [
+            { field: "category", label: "Category" }
+          ],
+          sortOptions: [
+            { label: "Publication Date (Newest)", field: "publicationDate", value: "publicationDate", dateLike: true, defaultDir: "desc" },
+            { label: "Question ID", field: "questionId", value: "questionId" },
+            { label: "Question Text (A-Z)", field: "questionText", value: "questionText" },
+            { label: "Category", field: "category", value: "category" },
+            { label: "Views (Most Popular)", field: "views", value: "views", numeric: true, defaultDir: "desc" },
+            { label: "Helpful %", field: "helpful", value: "helpful", numeric: true, defaultDir: "desc" }
+          ],
+          perPageOptions: [5, 10, 20, 50],
+          defaultPerPage: 6
+        });
+      })();
+    </script>
+  </body>
+</html>

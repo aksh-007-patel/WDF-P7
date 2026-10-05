@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Hub - CHARUSAT</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+
+  <body class="index-body">
+
+    <!-- Notification Banner (Component 4) -->
+    <div class="sh-banner sh-banner-info"
+         data-banner-key="index-welcome-p4"
+         data-auto-dismiss="9000"
+         role="alert"
+         aria-live="polite">
+      <span class="sh-banner-msg">
+        🎓 New to Student Hub? <strong>Register now</strong> and access your academic portal instantly!
+      </span>
+      <button class="sh-banner-close" aria-label="Dismiss notification">×</button>
+    </div>
+
+    <header class="index-header">
+      <div class="brand">
+        <span class="brand-mark">SH</span>
+        <span>STUDENT HUB</span>
+      </div>
+      <nav class="index-nav">
+        <a href="home.html">Home</a>
+        <a href="PAGES/REGISTER.HTML">Register</a>
+        <a href="PAGES/LOGIN.HTML">Login</a>
+        <a href="PAGES/ABOUT.HTML">About</a>
+        <!-- Light / Dark Theme Switcher (Component 6) -->
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme" aria-pressed="false">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="index-main">
+      <div class="hero-card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvphe8hqRunVzYYN6gY1HDi1Yd9lWYP0klyAwoVIpRO9cj8OOlWxovEjA&s=10"
+          alt="CHARUSAT University Logo"
+          width="110"
+        />
+        <h1>WELCOME TO STUDENT HUB</h1>
+        <p class="hero-tagline">Charotar University of Science and Technology (CHARUSAT)</p>
+        <p class="hero-desc">
+          Unified academic and campus services platform for students, faculty, and administrators.
+        </p>
+
+        <div class="hero-actions">
+          <a href="home.html" class="primary-btn">Enter Portal</a>
+          <a href="PAGES/REGISTER.HTML" class="secondary-btn">New Registration</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="index-footer">
+      <hr />
+      <p>&copy; 2026 Student Hub. Charotar University of Science and Technology. All Rights Reserved.</p>
+    </footer>
+
+    <script src="JS/SCRIPT.JS"></script>
+    <script src="JS/dynamic-ui.js"></script>
+  </body>
+</html>

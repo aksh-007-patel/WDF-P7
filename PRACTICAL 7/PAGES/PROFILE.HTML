@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Directory - Student Hub</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="container profile-container">
+      <div class="header-top-row">
+        <span class="badge">Student Directory</span>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </div>
+
+      <h1>Student Hub</h1>
+      <h2>Student Profiles &amp; Directory</h2>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px;">
+        <p class="subtitle" style="margin:0; color: var(--text-muted);">
+          Browse student profiles with academic details, majors, GPAs, extracurricular activities, and contact information.
+        </p>
+        <button type="button" class="home-btn" id="openAddStudentBtn" data-modal-open="modal-add-student" style="background:var(--primary); color:#fff; border:none; padding:8px 16px; cursor:pointer; font-weight:600;">
+          ➕ Add Student Profile
+        </button>
+      </div>
+
+      <div id="students-root" aria-live="polite"></div>
+
+      <!-- Modal: Add New Student Profile -->
+      <div id="modal-add-student" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-student-title">
+        <div class="sh-modal-content" style="max-width:650px; text-align:left;">
+          <button class="sh-modal-close" aria-label="Close">×</button>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <span style="font-size:2rem;">🎓</span>
+            <div>
+              <h3 id="modal-student-title" style="margin:0;">Create Student Profile</h3>
+              <span style="font-size:0.85rem; color:var(--text-muted);">Stored into DATA/students.json via PHP</span>
+            </div>
+          </div>
+
+          <div id="studentModalFeedback" style="display:none; margin-bottom:15px;"></div>
+
+          <form id="addStudentForm" action="../PHP/process_student.php" method="POST">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+              <div>
+                <label for="stu_id">Student ID (Optional, e.g. 26DCE150)</label>
+                <input type="text" id="stu_id" name="studentId" placeholder="Leave blank to auto-generate" />
+              </div>
+
+              <div>
+                <label for="stu_name">Full Name *</label>
+                <input type="text" id="stu_name" name="fullName" placeholder="e.g. Priyanshu Dave" required />
+              </div>
+
+              <div>
+                <label for="stu_major">Major / Department *</label>
+                <select id="stu_major" name="major" required>
+                  <option value="">Select Department</option>
+                  <option value="Computer Engineering">Computer Engineering</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Mechanical Engineering">Mechanical Engineering</option>
+                  <option value="Electrical Engineering">Electrical Engineering</option>
+                  <option value="Electronics & Communication">Electronics & Communication</option>
+                  <option value="Biomedical Engineering">Biomedical Engineering</option>
+                  <option value="Chemical Engineering">Chemical Engineering</option>
+                  <option value="Civil Engineering">Civil Engineering</option>
+                  <option value="Computer Applications">Computer Applications</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="stu_grad">Graduation Year *</label>
+                <input type="number" id="stu_grad" name="graduationYear" value="2028" min="2020" max="2035" required />
+              </div>
+
+              <div>
+                <label for="stu_gpa">Cumulative GPA (Scale of 10) *</label>
+                <input type="number" id="stu_gpa" name="gpa" step="0.01" value="8.50" min="0" max="10" required />
+              </div>
+
+              <div>
+                <label for="stu_mobile">Mobile Number *</label>
+                <input type="tel" id="stu_mobile" name="phone" placeholder="10-digit phone number" required />
+              </div>
+
+              <div style="grid-column: 1 / -1;">
+                <label for="stu_email">Email Address *</label>
+                <input type="email" id="stu_email" name="email" placeholder="e.g. student@charusat.edu.in" required />
+              </div>
+
+              <div style="grid-column: 1 / -1;">
+                <label for="stu_addr">City / Address *</label>
+                <input type="text" id="stu_addr" name="address" placeholder="e.g. Ahmedabad, Gujarat" required />
+              </div>
+
+              <div style="grid-column: 1 / -1;">
+                <label for="stu_activities">Extracurricular Activities (comma separated)</label>
+                <input type="text" id="stu_activities" name="extracurricularActivities" placeholder="e.g. Coding Club, Hackathon Winner, NSS Volunteer" />
+              </div>
+            </div>
+
+            <div class="buttons" style="margin-top:18px;">
+              <input type="submit" value="SAVE STUDENT (PHP)" />
+              <input type="button" value="Cancel" class="sh-modal-close" style="cursor:pointer;" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr />
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
+        <a href="DASHBOARD.HTML" class="home-btn">Dashboard</a>
+        <a href="../home.html" class="home-btn">← Back to Home</a>
+      </div>
+
+      <footer>
+        <p>&copy; 2026 Student Hub. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+    <script src="../JS/SCRIPT.JS"></script>
+    <script src="../JS/dynamic-ui.js"></script>
+    <script src="../JS/data-manager.js"></script>
+    <script src="../JS/data-table.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        function majorChip(major) {
+          const map = {
+            "Computer Engineering": "chip-hackathon",
+            "Mechanical Engineering": "chip-sports",
+            "Electrical Engineering": "chip-career",
+            "Electronics & Communication": "chip-networking",
+            "Biomedical Engineering": "chip-health",
+            "Information Technology": "chip-seminar",
+            "Chemical Engineering": "chip-workshop",
+            "Civil Engineering": "chip-competition"
+          };
+          return `<span class="dyn-chip ${map[major] || "chip-seminar"}">${major}</span>`;
+        }
+
+        function gpaDisplay(gpa) {
+          const g = Number(gpa) || 0;
+          const pct = Math.min(100, (g / 10) * 100);
+          let color = "var(--success)";
+          if (g < 7) color = "var(--danger)";
+          else if (g < 8.5) color = "var(--accent-hover)";
+          return `
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="stu-gpa" style="color:${color};">${g.toFixed(2)}</span>
+              <div class="stu-gpa-bar">
+                <div class="stu-gpa-fill" style="width:${pct}%; background: linear-gradient(90deg, ${color}, var(--secondary));"></div>
+              </div>
+            </div>
+          `;
+        }
+
+        function gradYearChip(y) {
+          const year = Number(y) || 0;
+          const now = new Date().getFullYear();
+          const status = year <= now ? "Alumni" : `Class of ${year}`;
+          const cls = year <= now ? "chip-career" : "chip-festival";
+          return `<span class="dyn-chip ${cls}">🎓 ${status}</span>`;
+        }
+
+        SHDynTable.init({
+          pageKey: "students",
+          datasetKey: "students",
+          root: "#students-root",
+          searchFields: [
+            "studentId",
+            "fullName",
+            "major",
+            "graduationYear",
+            "gpa",
+            "extracurricularActivities",
+            "contact.email",
+            "contact.phone",
+            "contact.address"
+          ],
+          renderMode: "card",
+          filterFields: [
+            { field: "major", label: "Major" },
+            { field: "graduationYear", label: "Grad Year" }
+          ],
+          sortOptions: [
+            { label: "Name (A-Z)", field: "fullName", value: "fullName", defaultDir: "asc" },
+            { label: "Student ID", field: "studentId", value: "studentId" },
+            { label: "Major", field: "major", value: "major" },
+            { label: "Graduation Year", field: "graduationYear", value: "graduationYear", numeric: true },
+            { label: "GPA (Highest First)", field: "gpa", value: "gpa", numeric: true, defaultDir: "desc" }
+          ],
+          cardTemplateFn: (s) => {
+            const gpa = Number(s.gpa) || 0;
+            const ec = Array.isArray(s.extracurricularActivities) ? s.extracurricularActivities : [];
+            const c = s.contact || {};
+            return `
+              <h3>${s.fullName}</h3>
+              <div class="dyn-card-meta">
+                <span class="dyn-id">${s.studentId}</span>
+                ${majorChip(s.major)}
+                ${gradYearChip(s.graduationYear)}
+              </div>
+              ${gpaDisplay(gpa)}
+              ${ec.length ? `
+                <ul class="stu-ec-list">
+                  ${ec.slice(0, 4).map(a => `<li>${a}</li>`).join("")}
+                  ${ec.length > 4 ? `<li style="font-style:italic; opacity:0.75;">+${ec.length - 4} more</li>` : ""}
+                </ul>` : ""}
+              <div class="dyn-card-footer">
+                <div class="stu-contact">
+                  <span>📧 <a href="mailto:${c.email || "#"}">${c.email || "—"}</a></span>
+                  <span>📱 <a href="tel:${c.phone || "#"}">${c.phone || "—"}</a></span>
+                  ${c.address ? `<span>📍 ${c.address}</span>` : ""}
+                </div>
+              </div>
+            `;
+          },
+          perPageOptions: [5, 10, 20, 50],
+          defaultPerPage: 10
+        });
+      })();
+    </script>
+  </body>
+</html>

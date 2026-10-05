@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Student Hub</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+
+  <body class="home-body">
+
+    <!-- ── NOTIFICATION BANNER (Component 4) ─────────────────────────── -->
+    <div class="sh-banner sh-banner-info"
+         data-banner-key="home-welcome-p4"
+         data-auto-dismiss="8000"
+         role="alert"
+         aria-live="polite">
+      <span class="sh-banner-msg">
+        📢 Welcome to Student Hub! Register now for Semester IV exams — deadline is <strong>Oct 15, 2026</strong>.
+      </span>
+      <button class="sh-banner-close" aria-label="Dismiss notification">×</button>
+    </div>
+
+    <!-- ── HEADER ─────────────────────────────────────────────────────── -->
+    <header>
+      <div class="header-content">
+        <h1>STUDENT HUB</h1>
+        <p class="header-subtitle">CHARUSAT Academic &amp; Campus Portal</p>
+      </div>
+    </header>
+
+    <!-- ── NAV WITH HAMBURGER MENU (Component 5) ─────────────────────── -->
+    <nav id="mainNav">
+      <!-- Hamburger button (visible only on mobile) -->
+      <button class="hamburger-btn" data-nav-target="mainNav" aria-label="Open navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a href="home.html" class="active">HOME</a>
+      <a href="PAGES/REGISTER.HTML">REGISTER</a>
+      <a href="PAGES/LOGIN.HTML">LOGIN</a>
+      <a href="PAGES/DASHBOARD.HTML">DASHBOARD</a>
+      <a href="PAGES/EVENTS.HTML">EVENTS</a>
+      <a href="PAGES/ABOUT.HTML">ABOUT</a>
+      <a href="PAGES/FAQ.HTML">FAQ</a>
+      <a href="PAGES/CONTACT.HTML">CONTACT</a>
+
+      <!-- Light / Dark Theme Switcher (Component 6) -->
+      <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme" aria-pressed="false">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-text">Dark mode</span>
+      </button>
+    </nav>
+
+    <!-- ── MAIN CONTENT ───────────────────────────────────────────────── -->
+    <main class="content">
+      <h2>Welcome to Student Hub</h2>
+      <p class="intro-text">
+        Your one-stop platform for student registration, academic tracking, campus events, and administrative services.
+      </p>
+
+      <!-- ── CONTENT SLIDER / CAROUSEL (Component 3) ─────────────────── -->
+      <div class="sh-slider" data-autoplay="5000" aria-label="Campus highlights carousel">
+        <div class="sh-slider-track">
+
+          <!-- Slide 1 -->
+          <div class="sh-slide">
+            <span class="sh-slide-icon">🎓</span>
+            <span class="slide-badge">Academic</span>
+            <h3>Semester IV Registrations Open</h3>
+            <p>Complete your course registration before <strong>October 15, 2026</strong>. Log in to your dashboard to enroll.</p>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="sh-slide">
+            <span class="sh-slide-icon">🏆</span>
+            <span class="slide-badge">Achievement</span>
+            <h3>CHARUSAT Ranks in Top 50 Universities</h3>
+            <p>We are proud to announce CHARUSAT has been ranked among India's top 50 engineering universities for 2026.</p>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="sh-slide">
+            <span class="sh-slide-icon">📅</span>
+            <span class="slide-badge">Events</span>
+            <h3>TechFest 2026 — Register Now!</h3>
+            <p>Annual intercollegiate tech festival with hackathons, coding battles, and robotics. Don't miss it!</p>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="sh-slide">
+            <span class="sh-slide-icon">📢</span>
+            <span class="slide-badge">Notice</span>
+            <h3>New Library Hours Effective Nov 1</h3>
+            <p>The central library will be open <strong>7 AM – 10 PM</strong> on all weekdays starting November 1, 2026.</p>
+          </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="sh-slider-prev" aria-label="Previous slide">&#8249;</button>
+        <button class="sh-slider-next" aria-label="Next slide">&#8250;</button>
+        <div class="sh-slider-dots" role="tablist" aria-label="Slide indicators"></div>
+      </div>
+      <!-- /slider -->
+
+      <!-- ── FEATURE CARDS ─────────────────────────────────────────────── -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="card-icon">🎓</div>
+          <h3>Student Portal</h3>
+          <p>Access your academic dashboard, track attendance, and view semester marks.</p>
+          <a href="PAGES/DASHBOARD.HTML">Go to Dashboard</a>
+        </div>
+
+        <div class="feature-card highlight-card">
+          <div class="card-icon">📝</div>
+          <h3>Student Registration</h3>
+          <p>New to Student Hub? Register now with your official university credentials.</p>
+          <a href="PAGES/REGISTER.HTML">Register Now</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon">📅</div>
+          <h3>Campus Events</h3>
+          <p>Discover upcoming university hackathons, seminars, cultural fests, and workshops.</p>
+          <a href="PAGES/EVENTS.HTML">Explore Events</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon">❓</div>
+          <h3>Help &amp; FAQ</h3>
+          <p>Get instant answers to enrollment, course registration, and portal questions.</p>
+          <a href="PAGES/FAQ.HTML">FAQ Center</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Student Hub. CHARUSAT, Changa. All Rights Reserved.</p>
+    </footer>
+
+    <script src="JS/SCRIPT.JS"></script>
+    <script src="JS/dynamic-ui.js"></script>
+  </body>
+</html>

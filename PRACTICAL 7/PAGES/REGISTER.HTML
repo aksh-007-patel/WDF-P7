@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration - Student Hub</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="container register-container">
+      <header class="form-header">
+        <div class="header-top-row">
+          <span class="badge">Registration Portal</span>
+          <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-text">Dark mode</span>
+          </button>
+        </div>
+        <h1>Student Registration</h1>
+        <p class="subtitle">Please fill in your details according to official university records</p>
+      </header>
+
+      <div id="registrationFeedback" style="display:none; margin-bottom: 20px;"></div>
+
+      <form id="registrationForm" action="../PHP/process_register.php" method="POST">
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name (e.g., John Doe)"
+              autocomplete="name"
+              required
+            />
+            <span class="error-message" id="nameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email (e.g., name@example.com)"
+              autocomplete="email"
+              required
+            />
+            <span class="error-message" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              placeholder="Enter 10-digit mobile number"
+              autocomplete="tel"
+              required
+            />
+            <span class="error-message" id="mobileError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Min 8 chars: 1 uppercase, 1 lowercase, 1 number, 1 special"
+              autocomplete="new-password"
+              required
+            />
+            <span class="error-message" id="passwordError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+              required
+            />
+            <span class="error-message" id="confirmPasswordError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="course">Course</label>
+            <select id="course" name="course" required>
+              <option value="">Select Course</option>
+              <option value="BCA">BCA (Bachelor of Computer Applications)</option>
+              <option value="BBA">BBA (Bachelor of Business Administration)</option>
+              <option value="BTech">B.Tech (Bachelor of Technology)</option>
+              <option value="MCA">MCA (Master of Computer Applications)</option>
+            </select>
+            <span class="error-message" id="courseError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="year">Academic Year</label>
+            <select id="year" name="year" required>
+              <option value="">Select Academic Year</option>
+              <option value="1">First Year (FY)</option>
+              <option value="2">Second Year (SY)</option>
+              <option value="3">Third Year (TY)</option>
+              <option value="4">Fourth Year (Final Year)</option>
+            </select>
+            <span class="error-message" id="yearError"></span>
+          </div>
+
+          <div class="form-group full-width radio-group">
+            <label class="group-label">Gender</label>
+            <div class="radio-options">
+              <label class="radio-label">
+                <input type="radio" id="male" name="gender" value="Male" required />
+                <span>Male</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" id="female" name="gender" value="Female" />
+                <span>Female</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" id="other" name="gender" value="Other" />
+                <span>Other</span>
+              </label>
+            </div>
+            <span class="error-message" id="genderError"></span>
+          </div>
+
+          <div class="form-group full-width terms">
+            <label class="checkbox-label" for="terms">
+              <input type="checkbox" id="terms" name="terms" required />
+              <span>I accept the terms and conditions and confirm all details are accurate.</span>
+            </label>
+            <span class="error-message" id="termsError"></span>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <input type="submit" value="Register Now" />
+          <input type="reset" value="Clear Form" />
+        </div>
+      </form>
+
+      <div class="form-footer-nav">
+        <a href="../home.html" class="home-btn">← Back to Home</a>
+      </div>
+
+      <hr />
+
+      <footer>
+        <p>&copy; 2026 Student Hub. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+    <script src="../JS/SCRIPT.JS"></script>
+  </body>
+</html>

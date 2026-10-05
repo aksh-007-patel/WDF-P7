@@ -1,0 +1,45 @@
+{
+    "metadata": {
+        "dataset": "Contact Inquiries",
+        "version": "1.0.0",
+        "lastUpdated": "2026-10-05 11:44:12",
+        "totalRecords": 4
+    },
+    "records": [
+        {
+            "contactId": "CNT-2026-001",
+            "name": "Aarav Sharma",
+            "email": "aarav.sharma@example.com",
+            "subject": "Inquiry about Computer Engineering Admission",
+            "message": "Hello, I would like to inquire about the syllabus and laboratory facilities for the upcoming academic year.",
+            "submittedAt": "2026-10-05 10:30:00"
+        },
+        {
+            "contactId": "CNT-2026-002",
+            "name": "Aksh Patel",
+            "email": "aksh.patel@charusat.edu.in",
+            "subject": "Lab Access Inquiry",
+            "message": "Can students get weekend access to the AI / Robotics laboratory?",
+            "submittedAt": "2026-10-05 11:35:05",
+            "ipAddress": "127.0.0.1"
+        },
+        {
+            "contactId": "CNT-2026-003",
+            "name": "Dr. Ritesh Patel",
+            "email": "ritesh.patel@charusat.ac.in",
+            "subject": "Guest Lecture on Cloud Computing",
+            "message": "I would like to schedule a 2-hour guest lecture session on AWS &amp; Microservices for final year students.",
+            "submittedAt": "2026-10-05 11:42:12",
+            "ipAddress": "127.0.0.1"
+        },
+        {
+            "contactId": "CNT-2026-004",
+            "name": "Dr. Ritesh Patel",
+            "email": "ritesh.patel@charusat.ac.in",
+            "subject": "Guest Lecture on Cloud Computing",
+            "message": "I would like to schedule a 2-hour guest lecture session on AWS &amp; Microservices for final year students.",
+            "submittedAt": "2026-10-05 11:44:12",
+            "ipAddress": "127.0.0.1"
+        }
+    ]
+}

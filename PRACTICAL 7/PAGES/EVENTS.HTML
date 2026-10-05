@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Events - Student Hub</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="container events-container">
+      <div class="header-top-row">
+        <span class="badge">Campus Schedule</span>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark mode</span>
+        </button>
+      </div>
+
+      <h1>Student Hub</h1>
+      <h2>Upcoming &amp; Past Events</h2>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:18px;">
+        <p class="subtitle" style="margin:0; color: var(--text-muted);">
+          Search, filter, and sort through all campus events — hackathons, seminars, workshops, festivals, and more.
+        </p>
+        <button type="button" class="home-btn" id="openAddEventBtn" data-modal-open="modal-add-event" style="background:var(--primary); color:#fff; border:none; padding:8px 16px; cursor:pointer; font-weight:600;">
+          ➕ Add New Event
+        </button>
+      </div>
+
+      <!-- Dynamic Events root -->
+      <div id="events-root" aria-live="polite"></div>
+
+      <!-- Modal: Add New Event -->
+      <div id="modal-add-event" class="sh-modal" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
+        <div class="sh-modal-content" style="max-width:650px; text-align:left;">
+          <button class="sh-modal-close" aria-label="Close">×</button>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <span style="font-size:2rem;">📅</span>
+            <div>
+              <h3 id="modal-event-title" style="margin:0;">Create Campus Event</h3>
+              <span style="font-size:0.85rem; color:var(--text-muted);">Stored into DATA/events.json via PHP</span>
+            </div>
+          </div>
+
+          <div id="eventModalFeedback" style="display:none; margin-bottom:15px;"></div>
+
+          <form id="addEventForm" action="../PHP/process_event.php" method="POST">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+              <div style="grid-column: 1 / -1;">
+                <label for="evt_title">Event Title *</label>
+                <input type="text" id="evt_title" name="title" placeholder="e.g. AI Innovation Summit 2026" required />
+              </div>
+
+              <div style="grid-column: 1 / -1;">
+                <label for="evt_desc">Description *</label>
+                <textarea id="evt_desc" name="description" rows="3" placeholder="Brief overview of the event, highlights, and requirements..." required></textarea>
+              </div>
+
+              <div>
+                <label for="evt_date">Event Date *</label>
+                <input type="date" id="evt_date" name="date" required />
+              </div>
+
+              <div>
+                <label for="evt_time">Time (HH:MM) *</label>
+                <input type="time" id="evt_time" name="time" required />
+              </div>
+
+              <div>
+                <label for="evt_category">Category *</label>
+                <select id="evt_category" name="category" required>
+                  <option value="">Select Category</option>
+                  <option value="Seminar">Seminar</option>
+                  <option value="Hackathon">Hackathon</option>
+                  <option value="Competition">Competition</option>
+                  <option value="Festival">Festival</option>
+                  <option value="Workshop">Workshop</option>
+                  <option value="Career">Career</option>
+                  <option value="Networking">Networking</option>
+                  <option value="Health">Health</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Cultural">Cultural</option>
+                  <option value="Academic">Academic</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="evt_capacity">Attendance Capacity *</label>
+                <input type="number" id="evt_capacity" name="attendanceCapacity" value="200" min="5" max="10000" required />
+              </div>
+
+              <div>
+                <label for="evt_location">Venue / Location *</label>
+                <input type="text" id="evt_location" name="location" placeholder="e.g. Main Auditorium" required />
+              </div>
+
+              <div>
+                <label for="evt_organizer">Organizer *</label>
+                <input type="text" id="evt_organizer" name="organizer" placeholder="e.g. Dept. of Computer Science" required />
+              </div>
+            </div>
+
+            <div class="buttons" style="margin-top:18px;">
+              <input type="submit" value="SAVE EVENT (PHP)" />
+              <input type="button" value="Cancel" class="sh-modal-close" style="cursor:pointer;" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr />
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
+        <a href="DASHBOARD.HTML" class="home-btn">Dashboard</a>
+        <a href="../home.html" class="home-btn">← Back to Home</a>
+      </div>
+
+      <footer>
+        <p>&copy; 2026 Student Hub. All Rights Reserved.</p>
+      </footer>
+    </div>
+
+    <script src="../JS/SCRIPT.JS"></script>
+    <script src="../JS/dynamic-ui.js"></script>
+    <script src="../JS/data-manager.js"></script>
+    <script src="../JS/data-table.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        const categoriesLower = {
+          Seminar: "chip-seminar",
+          Hackathon: "chip-hackathon",
+          Competition: "chip-competition",
+          Festival: "chip-festival",
+          Workshop: "chip-workshop",
+          Career: "chip-career",
+          Networking: "chip-networking",
+          Health: "chip-health",
+          Sports: "chip-sports"
+        };
+
+        function categoryChip(cat) {
+          const cls = categoriesLower[cat] || "";
+          return `<span class="dyn-chip ${cls}">${cat}</span>`;
+        }
+
+        function capacityBadge(reg, cap) {
+          const pct = cap > 0 ? Math.round((reg / cap) * 100) : 0;
+          let cls = "";
+          let label = `${reg} / ${cap}`;
+          if (pct >= 100) cls = "full";
+          else if (pct >= 75) cls = "warn";
+          return `<span class="evt-capacity ${cls}" title="Capacity: ${pct}% filled">👥 ${label}</span>`;
+        }
+
+        SHDynTable.init({
+          pageKey: "events",
+          datasetKey: "events",
+          root: "#events-root",
+          searchFields: ["eventId", "title", "description", "date", "location", "category", "organizer"],
+          renderMode: "card",
+          filterFields: [
+            { field: "category", label: "Category" }
+          ],
+          sortOptions: [
+            { label: "Date", field: "date", value: "date", dateLike: true, defaultDir: "asc" },
+            { label: "Title (A-Z)", field: "title", value: "title" },
+            { label: "Location", field: "location", value: "location" },
+            { label: "Category", field: "category", value: "category" },
+            { label: "Capacity", field: "attendanceCapacity", value: "attendanceCapacity", numeric: true },
+            { label: "Registered (Most)", field: "registeredCount", value: "registeredCount", numeric: true, defaultDir: "desc" }
+          ],
+          cardTemplateFn: (e) => {
+            const dt = SHDynTable.formatDate(e.date);
+            const reg = Number(e.registeredCount || 0);
+            const cap = Number(e.attendanceCapacity || 0);
+            return `
+              <h3>${e.title}</h3>
+              <div class="dyn-card-meta">
+                <span class="dyn-id">${e.eventId}</span>
+                ${categoryChip(e.category)}
+                <span style="font-size:0.82rem; color: var(--text-muted); font-weight:600;">📅 ${dt}</span>
+                ${e.time ? `<span style="font-size:0.82rem; color: var(--text-muted); font-weight:600;">⏰ ${e.time}</span>` : ""}
+              </div>
+              <p class="dyn-card-desc">${e.description}</p>
+              <div style="font-size:0.85rem; color: var(--text-muted); display:flex; flex-direction:column; gap:3px;">
+                <div>📍 <strong style="color:var(--text-main);">Venue:</strong> ${e.location}</div>
+                <div>🎯 <strong style="color:var(--text-main);">Organizer:</strong> ${e.organizer}</div>
+              </div>
+              <div class="dyn-card-footer">
+                ${capacityBadge(reg, cap)}
+                <span style="font-size:0.8rem; font-weight:600; color: var(--secondary);">
+                  ${reg} registered
+                </span>
+              </div>
+            `;
+          },
+          perPageOptions: [5, 10, 20, 50],
+          defaultPerPage: 10
+        });
+      })();
+    </script>
+  </body>
+</html>
